@@ -1,0 +1,21 @@
+<?php  
+require_once 'login.php';  
+$db_server = mysql_connect($db_hostname, $db_username, $db_password);
+  if (!$db_server) die("Unable to connect to MySQL: " . mysql_error());
+
+  mysql_select_db($db_database)    
+  or die("Unable to select database: " . mysql_error());
+
+$query = "create table cats (
+	id smallint not null auto_increment,
+	family varchar(32) not null,
+	name varchar(32) not null,
+	age tinyint not null,
+	primary key (id) 
+	)";
+
+$result = mysql_query($query);
+
+if(!$result)
+die ("Database access failed : " .mysql_error());
+?>
